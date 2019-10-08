@@ -23,12 +23,12 @@
   )
 
   (defn latest-balance []
-    (def mapping
+    (def tx-amounts
       (map
         (fn [tx] (let [{:keys [amount]} tx] amount))
         @transactions))
 
-    (reduce + mapping)
+    (reduce + tx-amounts)
   )
 
   (defn deposit [amnt]

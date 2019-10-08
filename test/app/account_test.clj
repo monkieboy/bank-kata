@@ -45,11 +45,11 @@
 
   ((:withdraw acct) 100)
 
-  (testing "Depositing 100 to the account failed."
+  (testing "Withdrawing 100 from the account failed."
     (is (= expected ((:printStatement acct)))))
   )
 
-(deftest base-case
+(deftest base-case-supplied-in-kata
   (def expected (str "Date || Amount || Balance\n14/01/2012 || -500 || 2500\n13/01/2012 || 2000 || 3000\n10/01/2012 || 1000 || 1000"))
   (def acct (new-acct))
 
