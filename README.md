@@ -1,22 +1,9 @@
 # app
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure attempt at the bank kata: https://katalyst.codurance.com/bank
 
-## Usage
+This kata is typical for OO languages but required different thinking when approaching from a functional aspect, especially when I didn't know any clojure before I started.
 
-FIXME
+I tried to strictly follow TDD practices, but found the REPL to be too attractive at times. Now I know a little more about Clojure I will try again from scratch, read up a little on idiomatic Clojure too and incorporate good ideas I will have learned about.
 
-## License
-
-Copyright © 2019 FIXME
-
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
-
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+For now, enjoy attempt 0.0.1 in Clojure :-)
