@@ -2,19 +2,19 @@
   (:require [clojure.test :refer :all]
             [app.account :refer :all]))
 
-(deftest printing-account-statement
-  (def acct (bankApp 0))
-  (testing "Statement did not include correct header."
-    (is (= "Date || Amount || Balance\n" ((:printStatement acct))))))
-
 (def ts (atom {:date "19/11/2019"}))
 (defn change-date [date] (reset! ts {:date date} ))
 (defn new-acct [] (bankApp ts))
 
+(deftest printing-account-statement
+  (def acct (bankApp (new-acct)))
+  (testing "Statement did not include correct header."
+    (is (= "Date || Amount || Balance\n" ((:printStatement acct))))))
+
 (deftest depositing-to-account
 
   (def acct (new-acct))
-  (def expected (str "Date || Amount || Balance\n19/11/2019 || 100 || 100\n01/11/2019 || 200 || 300" ))
+  (def expected (str "Date || Amount || Balance\n01/11/2019 || 200 || 300\n19/11/2019 || 100 || 100" ))
 
   (change-date "19/11/2019")
 
@@ -30,7 +30,7 @@
 
 (deftest withdrawing-from-account
 
-  (def expected (str "Date || Amount || Balance\n19/11/2019 || 100 || 100\n01/11/2019 || 200 || 300\n02/11/2019 || -100 || 200" ))
+  (def expected (str "Date || Amount || Balance\n02/11/2019 || -100 || 200\n01/11/2019 || 200 || 300\n19/11/2019 || 100 || 100" ))
   (def acct (new-acct))
 
   (change-date "19/11/2019")
@@ -65,7 +65,9 @@
 
   ((:withdraw acct) 500)
 
+  (println (str "statement: " (:printStatement acct)))
+
   (testing "Accounting for transactions was incorrect."
     (is (= expected ((:printStatement acct)))))
-  )
+)
 

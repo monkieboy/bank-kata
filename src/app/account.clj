@@ -19,7 +19,7 @@
         @transactions)
     )
 
-    (str header (clojure.string/join "\n" txs))
+    (str header (clojure.string/join "\n" (reverse txs)))
   )
 
   (defn latest-balance []
